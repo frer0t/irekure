@@ -1,15 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  ChevronRight,
-  LogIn,
-  Menu,
-  MessageSquare,
-  Search,
-  Send,
-  X,
-} from "lucide-react";
+import { ChevronRight, LogIn, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -40,10 +32,10 @@ const NavBar = () => {
 
   // Set up navigation items
   const navItems = [
-    { href: "/", label: "Ahabanza", icon: MessageSquare },
-    { href: "/track", label: "Gukurikirana Ikibazo", icon: Search },
-    { href: "/submit", label: "Gutanga Ikibazo", icon: Send },
-    { href: "/about", label: "Abo Turi Bo", icon: MessageSquare },
+    { href: "/", label: "Ahabanza" },
+    { href: "/track", label: "Gukurikirana Ikibazo" },
+    { href: "/submit", label: "Gutanga Ikibazo" },
+    { href: "/about", label: "Abo Turi Bo" },
   ];
 
   return (
@@ -58,18 +50,12 @@ const NavBar = () => {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
       <div className="flex w-full max-w-7xl items-center justify-between p-3 px-4 md:px-6">
-        {/* Logo/Home link */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 400 }}
-        >
-          <Link href="/" className="inline-flex items-center">
-            <h2 className="text-3xl font-bold relative">
-              <span className="text-primary">i</span>rekure
-              <span className="absolute -top-1 -right-2 h-2 w-2 rounded-full bg-primary" />
-            </h2>
-          </Link>
-        </motion.div>
+        <Link href="/" passHref>
+          <h2 className="text-3xl font-bold relative">
+            <span className="text-primary">i</span>rekure
+            <span className="absolute -top-1 -right-2 h-2 w-2 rounded-full bg-primary" />
+          </h2>
+        </Link>
 
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center space-x-1">
@@ -88,8 +74,8 @@ const NavBar = () => {
                       ? "text-primary"
                       : "text-foreground/70 hover:text-primary"
                   }`}
+                  passHref
                 >
-                  <item.icon className="w-4 h-4" />
                   {item.label}
 
                   {isActive && (
@@ -108,7 +94,11 @@ const NavBar = () => {
 
           <div className="pl-2 ml-2 border-l border-foreground/10">
             <Button size="sm" variant="secondary" className="gap-1.5" asChild>
-              <Link href="/login">
+              <Link
+                href="/login"
+                className="inline-flex items-center gap-1.5"
+                passHref
+              >
                 <LogIn className="w-4 h-4" />
                 <span>Kwinjira</span>
               </Link>
@@ -162,6 +152,7 @@ const NavBar = () => {
                   >
                     <Link
                       href={item.href}
+                      passHref
                       className={`flex items-center justify-between p-3 rounded-lg ${
                         isActive
                           ? "bg-primary/10 text-primary"
@@ -169,7 +160,6 @@ const NavBar = () => {
                       }`}
                     >
                       <div className="flex items-center gap-2">
-                        <item.icon className="w-5 h-5" />
                         <span>{item.label}</span>
                       </div>
                       <ChevronRight className="w-4 h-4" />
@@ -186,7 +176,8 @@ const NavBar = () => {
               >
                 <Link
                   href="/login"
-                  className="flex items-center justify-between p-3 rounded-lg  text-white w-full bg-secondary hover:bg-secondary/80 transition-colors"
+                  className="flex items-center justify-between p-3 rounded-lg text-white w-full bg-secondary hover:bg-secondary/80 transition-colors"
+                  passHref
                 >
                   <div className="flex items-center gap-2">
                     <LogIn className="w-5 h-5" />

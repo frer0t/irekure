@@ -9,12 +9,12 @@ export default function NotFound() {
         <h3 className="text-3xl font-semibold">Ipaji Ntibashije Kuboneka</h3>
         <p className="text-xl text-muted-foreground max-w-md mx-auto">
           Ipaji mushaka ntibashije kuboneka. Mushobora gusubira inyuma cyangwa
-          kujya ku ipaji y&aposibanze.
+          kujya ku ipaji y'ibanze.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
           <Link href="/" passHref className="cursor-pointer">
             <Button variant="default" size="lg" className="font-medium px-8">
-              Subira ku ipaji y&aposibanze
+              Subira ku ipaji y'ibanze
             </Button>
           </Link>
         </div>

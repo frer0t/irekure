@@ -4,18 +4,15 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Bell, ClipboardCheck, Clock, Search } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 
 export default function TrackSection() {
-  const [isHovered, setIsHovered] = useState(false);
-
   const steps = [
     {
       icon: Search,
-      text: "Shakisha ikibazo cyawe ukoresheje nomero y&aposibiranga",
+      text: "Shakisha ikibazo cyawe ukoresheje nomero y'ihariye",
     },
-    { icon: Clock, text: "Kurikirana aho igikemuro kigeze" },
-    { icon: Bell, text: "Kubona inyandiko z&aposibisubizo" },
+    { icon: Clock, text: "Kurikirana aho igisubizo kigeze" },
+    { icon: Bell, text: "Kubona inyandiko z'ibisubizo" },
   ];
 
   return (
@@ -44,20 +41,15 @@ export default function TrackSection() {
 
       <motion.div
         className="rounded-xl border border-muted bg-gradient-to-br from-card to-background p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-        whileHover={{ scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 300 }}
         style={{
           backgroundSize: "400% 400%",
-          backgroundPosition: isHovered ? "100% 100%" : "0% 0%",
         }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
       >
         <div className="mb-8">
           <p className="text-center text-lg mb-6">
-            Waba waratanze ikibazo? Injiza nomero yawe y&apos;ibiranga kugira
-            ngo urebe aho ikibazo cyawe kigeze n&apos;ibisubizo byatanzwe
-            n&apos;inzego za Leta.
+            Waba waratanze ikibazo? Injiza nomero yawe y'ibiranga kugira ngo
+            urebe aho ikibazo cyawe kigeze n'ibisubizo byatanzwe n'inzego za
+            Leta.
           </p>
 
           <div className="space-y-4 mb-8">
@@ -80,27 +72,14 @@ export default function TrackSection() {
           <div className="relative">
             <Button
               variant="outline"
-              className="w-full text-lg py-6 relative z-10 border-primary/30 text-foreground hover:text-primary hover:border-primary transition-colors duration-300"
+              className="w-full text-lg py-6 relative z-10 border-primary/30 text-foreground hover:text-primary hover:border-primary transition-colors duration-300 cursor-pointer"
               aria-label="Gukurikirana Ikibazo Gisanzwe"
             >
-              <motion.span
-                className="flex items-center gap-2"
-                animate={{ x: isHovered ? 5 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
+              <span className="flex items-center gap-2">
                 Gukurikirana Ikibazo Gisanzwe
                 <Search className="w-5 h-5" />
-              </motion.span>
+              </span>
             </Button>
-            <motion.div
-              className="absolute -z-10 inset-0 bg-foreground/5 rounded-lg blur-md"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{
-                opacity: isHovered ? 0.8 : 0,
-                scale: isHovered ? 1.05 : 0.8,
-              }}
-              transition={{ duration: 0.2 }}
-            />
           </div>
         </Link>
       </motion.div>

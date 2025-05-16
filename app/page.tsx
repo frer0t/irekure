@@ -1,11 +1,11 @@
 "use client";
-import CtaSection from "@/components/CtaSection";
-import Header from "@/components/Header";
-import InstitutionsSection from "@/components/InstitutionsSection";
-import { ProcessFlow } from "@/components/ProcessFlow";
-import StatsSection from "@/components/StatsSection";
-import SubmitSection from "@/components/SubmitSection";
-import TrackSection from "@/components/TrackSection";
+import CtaSection from "@/components/landing/CtaSection";
+import Header from "@/components/landing/Hero";
+import InstitutionsSection from "@/components/landing/InstitutionsSection";
+import { ProcessFlow } from "@/components/landing/ProcessFlow";
+import StatsSection from "@/components/landing/StatsSection";
+import SubmitSection from "@/components/landing/SubmitSection";
+import TrackSection from "@/components/landing/TrackSection";
 
 import { motion } from "framer-motion";
 

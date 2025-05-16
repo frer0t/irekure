@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function CtaSection() {
@@ -10,7 +11,7 @@ export default function CtaSection() {
 
   return (
     <motion.section
-      className="w-full py-20 my-12"
+      className="w-full "
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
@@ -18,10 +19,8 @@ export default function CtaSection() {
       <div className="container mx-auto px-4">
         <motion.div
           className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/80 via-primary to-primary/90 p-10 text-primary-foreground shadow-xl"
-          whileHover={{ scale: 1.01 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          {/* Background decoration elements */}
           <div className="absolute inset-0 opacity-15">
             <motion.div
               className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-white/80 blur-md"
@@ -67,9 +66,9 @@ export default function CtaSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
               >
-                Gutanga ibitekerezo byawe birafasha mu iterambere
-                ry&aposigihugu. Tanga igitekerezo cyawe ubu kugira ngo dufatanye
-                kubaka u Rwanda rwiza.
+                Gutanga ibitekerezo byawe birafasha mu iterambere ry'igihugu.
+                Tanga igitekerezo cyawe ubu kugira ngo dufatanye kubaka u Rwanda
+                rwiza.
               </motion.p>
             </div>
 
@@ -84,19 +83,21 @@ export default function CtaSection() {
                 onMouseLeave={() => setIsHovered(false)}
                 className="relative"
               >
-                <Button
-                  size="lg"
-                  variant="secondary"
-                  className="text-lg px-8 py-6 font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                >
-                  <span className="mr-2">Tanga Igitekerezo</span>
-                  <motion.div
-                    animate={{ x: isHovered ? 5 : 0 }}
-                    transition={{ duration: 0.2 }}
+                <Link href="/submit" passHref>
+                  <Button
+                    size="lg"
+                    variant="secondary"
+                    className="text-lg px-8 py-6 font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                   >
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.div>
-                </Button>
+                    <span className="mr-2">Ohereza Ikibazo Gishya</span>
+                    <motion.div
+                      animate={{ x: isHovered ? 5 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ArrowRight className="w-5 h-5" />
+                    </motion.div>
+                  </Button>
+                </Link>
                 <motion.div
                   className="absolute -z-10 inset-0 bg-white/20 rounded-xl blur-md"
                   initial={{ opacity: 0, scale: 0.8 }}

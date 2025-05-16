@@ -34,7 +34,7 @@ export const Footer = () => {
     {
       title: "Ibikurikizwa",
       links: [
-        { href: "/privacy", text: "Politiki y&aposIbanga" },
+        { href: "/privacy", text: "Politiki y'Ibanga" },
         { href: "/terms", text: "Amabwiriza" },
         { href: "/faq", text: "Ibibazo Bikunze Kubazwa" },
       ],
@@ -106,7 +106,7 @@ export const Footer = () => {
             >
               Irekure ni uburyo bwizewe bwo gutega amatwi abaturage. Gutanga
               igitekerezo cyawe bigufasha kwigira uruhare mu iterambere
-              r&aposy&aposigihugu.
+              r'y'igihugu.
             </motion.p>
 
             <motion.div

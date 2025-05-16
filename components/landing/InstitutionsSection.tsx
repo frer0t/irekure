@@ -13,23 +13,23 @@ interface FeaturedInstitutionProps {
 
 const institutions: FeaturedInstitutionProps[] = [
   {
-    name: "Minisiteri y&aposUbutegetsi bw&aposIgihugu",
+    name: "Minisiteri y'Ubutegetsi bw'Igihugu",
     logo: "/logos/minema.svg",
-    description: "Ishinzwe guhuza ibikorwa by&aposubutegetsi bw&aposigihugu",
+    description: "Ishinzwe guhuza ibikorwa by'ubutegetsi bw'igihugu",
     icon: Building2,
     link: "https://minaloc.gov.rw",
   },
   {
-    name: "Minisiteri y&aposUbuzima",
+    name: "Minisiteri y'Ubuzima",
     logo: "/logos/moh.svg",
-    description: "Ishinzwe kubungabunga ubuzima bw&aposabanyarwanda",
+    description: "Ishinzwe kubungabunga ubuzima bw'abanyarwanda",
     icon: Users,
     link: "https://moh.gov.rw",
   },
   {
-    name: "Ikigo cy&aposIgihugu Gishinzwe Iterambere",
+    name: "Ikigo cy'Igihugu Gishinzwe Iterambere",
     logo: "/logos/rdb.svg",
-    description: "Gishinzwe iterambere ry&aposubukungu mu Rwanda",
+    description: "Gishinzwe iterambere ry'ubukungu mu Rwanda",
     icon: Building2,
     link: "https://rdb.rw",
   },
@@ -54,7 +54,7 @@ export default function InstitutionsSection() {
 
   return (
     <motion.section
-      className="w-full py-16 bg-gradient-to-b from-background to-muted/20 rounded-t-3xl"
+      className="w-full pb-16 bg-gradient-to-b from-background to-muted/20 rounded-t-3xl"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.5 }}
@@ -117,15 +117,11 @@ export default function InstitutionsSection() {
                     delay: index * 0.5,
                   }}
                 />
-                <motion.div
-                  className="w-20 h-20 mb-6 relative bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center"
-                  whileHover={{ rotate: 15, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 200 }}
-                >
+                <div className="w-20 h-20 mb-6 relative bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center">
                   {institution.icon && (
                     <institution.icon className="w-10 h-10 text-primary" />
                   )}
-                </motion.div>
+                </div>
               </div>
 
               <h3 className="font-bold text-xl mb-3">{institution.name}</h3>
@@ -140,10 +136,9 @@ export default function InstitutionsSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm font-medium group"
-                  whileHover={{ x: 5 }}
                 >
                   <span>Reba urubuga rwabo</span>
-                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ExternalLink className="w-4 h-4 " />
                 </motion.a>
               )}
             </motion.div>

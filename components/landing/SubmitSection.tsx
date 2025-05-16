@@ -4,15 +4,12 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { CheckCircle, PlusCircle, Send } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 
 export default function SubmitSection() {
-  const [isHovered, setIsHovered] = useState(false);
-
   const steps = [
     { icon: PlusCircle, text: "Tanga igitekerezo cyawe ku mbuga" },
-    { icon: Send, text: "Koresha uburyo bw&aposikoranabuhanga" },
-    { icon: CheckCircle, text: "Kubona nomero y&aposibiranga bwite" },
+    { icon: Send, text: "Koresha uburyo bw'ikoranabuhanga" },
+    { icon: CheckCircle, text: "Kubona nomero y'ibiranga bwite" },
   ];
 
   return (
@@ -36,22 +33,17 @@ export default function SubmitSection() {
         </h2>
       </div>
 
-      <motion.div
+      <div
         className="rounded-xl border border-primary/20 bg-gradient-to-br from-card to-card/90 p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-        whileHover={{ scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 300 }}
         style={{
           backgroundSize: "400% 400%",
-          backgroundPosition: isHovered ? "100% 100%" : "0% 0%",
         }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
       >
         <div className="mb-8">
           <p className="text-center text-lg mb-6">
             Koresha iyi platform gutanga igitekerezo cyangwa ikibazo ku nzego za
-            Leta. Uzahabwa nomero y&apos;ibiranga kugira ngo ukurikirane aho
-            ikibazo cyawe kigeze.
+            Leta. Uzahabwa nomero y'ibiranga kugira ngo ukurikirane aho ikibazo
+            cyawe kigeze.
           </p>
 
           <div className="space-y-4 mb-8">
@@ -73,30 +65,17 @@ export default function SubmitSection() {
         <Link href="/submit" passHref>
           <div className="relative">
             <Button
-              className="w-full text-lg py-6 relative z-10 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-md"
+              className="w-full text-lg py-6 relative z-10 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-md cursor-pointer"
               aria-label="Gutanga Ikibazo Gishya"
             >
-              <motion.span
-                className="flex items-center gap-2"
-                animate={{ x: isHovered ? 5 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
+              <span className="flex items-center gap-2">
                 Gutanga Ikibazo Gishya
                 <Send className="w-5 h-5" />
-              </motion.span>
+              </span>
             </Button>
-            <motion.div
-              className="absolute -z-10 inset-0 bg-primary/20 rounded-lg blur-md"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{
-                opacity: isHovered ? 0.8 : 0,
-                scale: isHovered ? 1.05 : 0.8,
-              }}
-              transition={{ duration: 0.2 }}
-            />
           </div>
         </Link>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }

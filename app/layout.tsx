@@ -92,12 +92,6 @@ export default function RootLayout({
             <Footer />
             <ScrollToTopButton />
           </div>
-          <a
-            href="#main-content"
-            className="fixed top-0 left-0 p-3 bg-primary text-primary-foreground -translate-y-full focus:translate-y-0 transition-transform z-50"
-          >
-            Skip to content
-          </a>
         </ThemeProvider>
       </body>
     </html>
