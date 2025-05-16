@@ -79,7 +79,6 @@ const NavBar = () => {
             return (
               <motion.div
                 key={item.href}
-                whileHover={{ y: -2 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
                 <Link

@@ -76,8 +76,8 @@ export default function RootLayout({
       >
         <NextTopLoader
           showSpinner={false}
-          height={2}
-          color="white"
+          height={4}
+          color="green"
           shadow={false}
         />
         <ThemeProvider
