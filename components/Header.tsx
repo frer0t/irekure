@@ -72,8 +72,8 @@ export default function Header() {
           transition={{ delay: 0.6, duration: 0.6 }}
         >
           Irekure ni uburyo bwizewe bwo guha abaturage ijambo mu iterambere
-          ry'igihugu. Tanga ikibazo cyangwa igitekerezo maze ukurikire igisubizo
-          kugeza kirangiye.
+          ry&aposigihugu. Tanga ikibazo cyangwa igitekerezo maze ukurikire
+          igisubizo kugeza kirangiye.
         </motion.p>
       </motion.div>
 

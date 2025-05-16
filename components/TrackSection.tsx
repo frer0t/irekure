@@ -12,10 +12,10 @@ export default function TrackSection() {
   const steps = [
     {
       icon: Search,
-      text: "Shakisha ikibazo cyawe ukoresheje nomero y'ibiranga",
+      text: "Shakisha ikibazo cyawe ukoresheje nomero y&aposibiranga",
     },
     { icon: Clock, text: "Kurikirana aho igikemuro kigeze" },
-    { icon: Bell, text: "Kubona inyandiko z'ibisubizo" },
+    { icon: Bell, text: "Kubona inyandiko z&aposibisubizo" },
   ];
 
   return (

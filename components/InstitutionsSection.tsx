@@ -13,23 +13,23 @@ interface FeaturedInstitutionProps {
 
 const institutions: FeaturedInstitutionProps[] = [
   {
-    name: "Minisiteri y'Ubutegetsi bw'Igihugu",
+    name: "Minisiteri y&aposUbutegetsi bw&aposIgihugu",
     logo: "/logos/minema.svg",
-    description: "Ishinzwe guhuza ibikorwa by'ubutegetsi bw'igihugu",
+    description: "Ishinzwe guhuza ibikorwa by&aposubutegetsi bw&aposigihugu",
     icon: Building2,
     link: "https://minaloc.gov.rw",
   },
   {
-    name: "Minisiteri y'Ubuzima",
+    name: "Minisiteri y&aposUbuzima",
     logo: "/logos/moh.svg",
-    description: "Ishinzwe kubungabunga ubuzima bw'abanyarwanda",
+    description: "Ishinzwe kubungabunga ubuzima bw&aposabanyarwanda",
     icon: Users,
     link: "https://moh.gov.rw",
   },
   {
-    name: "Ikigo cy'Igihugu Gishinzwe Iterambere",
+    name: "Ikigo cy&aposIgihugu Gishinzwe Iterambere",
     logo: "/logos/rdb.svg",
-    description: "Gishinzwe iterambere ry'ubukungu mu Rwanda",
+    description: "Gishinzwe iterambere ry&aposubukungu mu Rwanda",
     icon: Building2,
     link: "https://rdb.rw",
   },

@@ -40,7 +40,7 @@ export default function StatsSection({
     {
       value: `${stats.avgResponseTime}h`,
       label: "Igihe cyo Gusubiza",
-      description: "Impuzandengo y'igihe cyo gusubiza",
+      description: "Impuzandengo y&aposigihe cyo gusubiza",
       icon: Clock,
       color: "from-amber-500 to-orange-600",
     },

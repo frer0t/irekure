@@ -67,9 +67,9 @@ export default function CtaSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
               >
-                Gutanga ibitekerezo byawe birafasha mu iterambere ry'igihugu.
-                Tanga igitekerezo cyawe ubu kugira ngo dufatanye kubaka u Rwanda
-                rwiza.
+                Gutanga ibitekerezo byawe birafasha mu iterambere
+                ry&aposigihugu. Tanga igitekerezo cyawe ubu kugira ngo dufatanye
+                kubaka u Rwanda rwiza.
               </motion.p>
             </div>
 

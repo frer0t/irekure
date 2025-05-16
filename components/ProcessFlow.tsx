@@ -60,12 +60,12 @@ export function ProcessFlow() {
     },
     {
       title: "Kohereza",
-      description: "Uburyo bw'ikoranabuhanga burabikurikirana",
+      description: "Uburyo bw&aposikoranabuhanga burabikurikirana",
       icon: SendHorizonal,
     },
     {
       title: "Gukurikirana",
-      description: "Koresha nomero y'ikiranga kureba aho bigeze",
+      description: "Koresha nomero y&aposikiranga kureba aho bigeze",
       icon: ClipboardCheck,
     },
     {

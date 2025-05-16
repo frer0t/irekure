@@ -11,8 +11,8 @@ export default function SubmitSection() {
 
   const steps = [
     { icon: PlusCircle, text: "Tanga igitekerezo cyawe ku mbuga" },
-    { icon: Send, text: "Koresha uburyo bw'ikoranabuhanga" },
-    { icon: CheckCircle, text: "Kubona nomero y'ibiranga bwite" },
+    { icon: Send, text: "Koresha uburyo bw&aposikoranabuhanga" },
+    { icon: CheckCircle, text: "Kubona nomero y&aposibiranga bwite" },
   ];
 
   return (
