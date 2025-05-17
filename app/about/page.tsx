@@ -26,7 +26,7 @@ const AboutPage = () => {
           >
             Ibyerekeye{" "}
             <p className="inline-flex items-center">
-              <h2 className="font-bold relative">
+              <span className="font-bold relative">
                 <span className="text-primary">i</span>rekure
                 <motion.span
                   className="absolute -top-1 -right-2 h-2 w-2 rounded-full bg-primary"
@@ -40,7 +40,7 @@ const AboutPage = () => {
                     repeatType: "reverse",
                   }}
                 />
-              </h2>
+              </span>
             </p>
           </motion.h1>
           <motion.p
