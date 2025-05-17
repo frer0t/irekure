@@ -1,5 +1,5 @@
-import { Footer } from "@/components/Footer";
-import NavBar from "@/components/NavBar";
+import { Footer } from "@/components/common/Footer";
+import NavBar from "@/components/common/NavBar";
 import { ScrollToTopButton } from "@/components/ui/scroll-to-top";
 import ThemeProvider from "@/providers/ThemeProvider";
 import { Viewport } from "next";

@@ -1,11 +1,11 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, LogIn, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Button } from "./ui/button";
 
 const NavBar = () => {
   const pathname = usePathname();
