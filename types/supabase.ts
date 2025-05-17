@@ -9,6 +9,48 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      answers: {
+        Row: {
+          answer: string
+          answered_by: string
+          complaint: string
+          created_at: string
+          id: number
+          organization: number
+        }
+        Insert: {
+          answer: string
+          answered_by?: string
+          complaint: string
+          created_at?: string
+          id?: number
+          organization: number
+        }
+        Update: {
+          answer?: string
+          answered_by?: string
+          complaint?: string
+          created_at?: string
+          id?: number
+          organization?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "answers_complaint_fkey"
+            columns: ["complaint"]
+            isOneToOne: false
+            referencedRelation: "complaints"
+            referencedColumns: ["ticket_id"]
+          },
+          {
+            foreignKeyName: "answers_organization_fkey"
+            columns: ["organization"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["org_id"]
+          },
+        ]
+      }
       categories: {
         Row: {
           cat_id: string
@@ -33,7 +75,7 @@ export type Database = {
             foreignKeyName: "categories_org_id_fkey"
             columns: ["org_id"]
             isOneToOne: false
-            referencedRelation: "organisations"
+            referencedRelation: "organizations"
             referencedColumns: ["org_id"]
           },
         ]
@@ -88,7 +130,7 @@ export type Database = {
           },
         ]
       }
-      organisations: {
+      organizations: {
         Row: {
           created_at: string
           description: string

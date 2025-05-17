@@ -86,7 +86,8 @@ const Submit = () => {
         push(`/submit/success?ticket_id=${data?.ticket_id}`);
       } else {
         setError(
-          sendingError || "Failed to submit complaint. Please try again."
+          (sendingError as string) ||
+            "Failed to submit complaint. Please try again."
         );
       }
     } catch (error) {

@@ -30,5 +30,14 @@ export const complaintFormSchema = z.object({
     )
     .optional(),
 });
-
+export const trackingSchema = z.object({
+  ticketId: z
+    .string()
+    .min(1, "Andika nomero y'ibiranga ikibazo cyawe")
+    .regex(
+      /^I-\d+-[a-zA-Z0-9]+$/,
+      "Andika nomero y'ibiranga ikibazo cyawe mu buryo bukwiriye (urugero: I-19-59d344)"
+    ),
+});
+export type TrackingFormData = z.infer<typeof trackingSchema>;
 export type ComplaintFormData = z.infer<typeof complaintFormSchema>;
