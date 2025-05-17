@@ -18,13 +18,13 @@ export const getApi = <T>(url: string, config?: AxiosRequestConfig) =>
 
 export const postApi = <T>(
   url: string,
-  data?: any,
+  data?: object | FormData,
   config?: AxiosRequestConfig
 ) => api.post<T>(url, data, config).then((response) => response.data);
 
 export const putApi = <T>(
   url: string,
-  data?: any,
+  data?: object | FormData,
   config?: AxiosRequestConfig
 ) => api.put<T>(url, data, config).then((response) => response.data);
 

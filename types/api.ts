@@ -8,7 +8,5 @@ interface ApiResponse<T> {
   details?: string[];
 }
 
-interface ComplaintResponse extends ApiResponse<Tables<"complaints">> {
-  ticket_id?: string;
-}
+interface ComplaintResponse extends ApiResponse<Tables<"complaints">> {}
 export type { ApiResponse, ComplaintResponse };
