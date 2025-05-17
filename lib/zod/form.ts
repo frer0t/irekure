@@ -7,7 +7,8 @@ export const complaintFormSchema = z.object({
   phone: z
     .string()
     .min(10, "Nimero ya telefoni igomba kugira imibare 10 byibura")
-    .max(10, "Nimero ya telefoni igomba kutarenga imibare 10 byibura"),
+    .max(10, "Nimero ya telefoni igomba kutarenga imibare 10 byibura")
+    .regex(/^07[2389]\d{7}$/, "Nimero ya telefoni ntiyanditse neza"),
   category: z.string().min(1, "Hitamo ikiciro"),
   title: z.string().min(5, "Inyito igomba kugira inyuguti 5 byibura").max(100),
   description: z
