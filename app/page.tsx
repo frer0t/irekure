@@ -35,15 +35,11 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
+        id="submit-section"
       >
-        <div
-          className="container mx-auto px-4 lg:px-8 max-w-7xl"
-          id="submit-section"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 w-full">
-            <SubmitSection />
-            <TrackSection />
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 w-full place-items-center px-8">
+          <SubmitSection />
+          <TrackSection />
         </div>
       </motion.section>
 

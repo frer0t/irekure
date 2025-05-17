@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { supabaseClient } from "@/lib/supabase/client";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, LogIn, Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -11,7 +12,7 @@ const NavBar = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const {} = supabaseClient.auth.getUser();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {

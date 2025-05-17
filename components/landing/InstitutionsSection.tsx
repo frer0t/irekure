@@ -1,36 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Building2, ExternalLink, Users } from "lucide-react";
+import { Building2, ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 interface FeaturedInstitutionProps {
   name: string;
   logo: string;
   description: string;
-  icon?: React.ElementType;
   link?: string;
 }
 
 const institutions: FeaturedInstitutionProps[] = [
   {
     name: "Minisiteri y'Ubutegetsi bw'Igihugu",
-    logo: "/logos/minema.svg",
+    logo: "https://minaloc.gov.rw/_assets/848a49247fad16e632dbfe56b131f2ac/Images/Coat.png",
     description: "Ishinzwe guhuza ibikorwa by'ubutegetsi bw'igihugu",
-    icon: Building2,
     link: "https://minaloc.gov.rw",
   },
   {
     name: "Minisiteri y'Ubuzima",
-    logo: "/logos/moh.svg",
+    logo: "",
     description: "Ishinzwe kubungabunga ubuzima bw'abanyarwanda",
-    icon: Users,
     link: "https://moh.gov.rw",
   },
   {
     name: "Ikigo cy'Igihugu Gishinzwe Iterambere",
-    logo: "/logos/rdb.svg",
+    logo: "",
     description: "Gishinzwe iterambere ry'ubukungu mu Rwanda",
-    icon: Building2,
     link: "https://rdb.rw",
   },
 ];
@@ -118,8 +115,16 @@ export default function InstitutionsSection() {
                   }}
                 />
                 <div className="w-20 h-20 mb-6 relative bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center">
-                  {institution.icon && (
-                    <institution.icon className="w-10 h-10 text-primary" />
+                  {institution.logo ? (
+                    <Image
+                      width={40}
+                      height={40}
+                      alt={institution.name}
+                      src={institution.logo}
+                      className="w-10 h-10 text-primary"
+                    />
+                  ) : (
+                    <Building2 className="w-10 h-10" />
                   )}
                 </div>
               </div>

@@ -71,7 +71,7 @@ export default function RootLayout({
     <html lang="rw" suppressHydrationWarning className="scroll-smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
-        style={{ colorScheme: "dark" }}
+        style={{ colorScheme: "light" }}
         suppressHydrationWarning
       >
         <NextTopLoader
@@ -82,7 +82,7 @@ export default function RootLayout({
         />
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
