@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
-import { login, signup } from "./actions";
+import { login } from "./actions";
 
 export default function LoginPage() {
   return (
@@ -66,7 +66,7 @@ export default function LoginPage() {
                 >
                   injira
                 </Button>
-                <div className="relative my-2">
+                {/* <div className="relative my-2">
                   <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t"></span>
                   </div>
@@ -83,7 +83,7 @@ export default function LoginPage() {
                   className="w-full"
                 >
                   Kwiyandikisha
-                </Button>
+                </Button> */}
               </div>
             </form>
           </CardContent>

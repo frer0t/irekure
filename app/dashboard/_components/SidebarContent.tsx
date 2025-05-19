@@ -4,6 +4,7 @@ import { FileText, Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarContent as SidebarContentContainer,
@@ -13,6 +14,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { logout } from "../actions";
 
 const navigationLinks = [
   { href: "/dashboard", label: "Ahabanza", icon: Home },
@@ -57,6 +59,20 @@ const SidebarContent = () => {
             );
           })}
         </SidebarMenu>
+
+        {/* Logout Button */}
+        <div className="mt-auto px-2 pb-4">
+          <Separator className="my-4" />
+          <form action={logout}>
+            <Button
+              type="submit"
+              variant={"destructive"}
+              className="w-full hover:cursor-pointer"
+            >
+              <span>Gusohoka</span>
+            </Button>
+          </form>
+        </div>
       </SidebarContentContainer>
     </>
   );

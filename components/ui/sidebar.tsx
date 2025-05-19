@@ -66,11 +66,25 @@ function SidebarProvider({
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
 }) {
-  const isMobile = React.useMemo(() => {
-    return (
-      typeof window !== "undefined" &&
-      (window.innerWidth < 768 || window.innerHeight < 600)
-    );
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  // Check for mobile on mount and window resize
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(
+        typeof window !== "undefined" &&
+          (window.innerWidth < 768 || window.innerHeight < 600)
+      );
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener("resize", checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const [openMobile, setOpenMobile] = React.useState(false);
