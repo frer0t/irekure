@@ -1,7 +1,6 @@
 import { format, parseISO } from "date-fns";
-import { Check, Clock, MoreHorizontal } from "lucide-react";
+import { Clock, MoreHorizontal } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -19,8 +18,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getStatusBadge } from "@/constants/complaint-status";
 import { createClientServer } from "@/lib/supabase/server";
-import { Tables } from "@/types/supabase";
+import Link from "next/link";
 
 export default async function ComplaintsPage() {
   const supabase = await createClientServer();
@@ -29,31 +29,6 @@ export default async function ComplaintsPage() {
     if (!dateString) return "";
     const date = parseISO(dateString);
     return format(date, "PPpp");
-  };
-
-  const getStatusBadge = (status: Tables<"complaints">["status"]) => {
-    switch (status) {
-      case "submitted":
-        return (
-          <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
-            Byatanzwe
-          </Badge>
-        );
-      case "reviewing":
-        return (
-          <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">
-            Birebwa
-          </Badge>
-        );
-      case "solved":
-        return (
-          <Badge className="bg-green-100 text-green-800 hover:bg-green-200">
-            Byakemutse
-          </Badge>
-        );
-      default:
-        return <Badge>{status}</Badge>;
-    }
   };
 
   const { data: complaints, error } = await supabase
@@ -120,10 +95,12 @@ export default async function ComplaintsPage() {
                       <DropdownMenuLabel>Ibikorwa</DropdownMenuLabel>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem>
-                        <Check className="mr-2 h-3.5 w-3.5" />
-                        Gukemura
+                        <Link
+                          href={`/dashboard/complaints/${complaint.ticket_id}`}
+                        >
+                          Reba Ibisobanuro
+                        </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuSeparator />
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>

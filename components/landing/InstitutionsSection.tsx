@@ -20,13 +20,13 @@ const institutions: FeaturedInstitutionProps[] = [
   },
   {
     name: "Minisiteri y'Ubuzima",
-    logo: "",
+    logo: "https://minaloc.gov.rw/_assets/848a49247fad16e632dbfe56b131f2ac/Images/Coat.png",
     description: "Ishinzwe kubungabunga ubuzima bw'abanyarwanda",
     link: "https://moh.gov.rw",
   },
   {
     name: "Ikigo cy'Igihugu Gishinzwe Iterambere",
-    logo: "",
+    logo: "https://minaloc.gov.rw/_assets/848a49247fad16e632dbfe56b131f2ac/Images/Coat.png",
     description: "Gishinzwe iterambere ry'ubukungu mu Rwanda",
     link: "https://rdb.rw",
   },

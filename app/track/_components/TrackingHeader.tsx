@@ -1,5 +1,5 @@
 import { CardHeader } from "@/components/ui/card";
-import getComplaintStatus from "@/constants/complaint-status";
+import { getComplaintStatus } from "@/constants/complaint-status";
 import { TicketResponse } from "@/types/api";
 
 const TrackingHeader = ({ data }: { data: TicketResponse["data"] }) => {
