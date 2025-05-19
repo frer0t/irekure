@@ -122,3 +122,8 @@ pnpm start
 
 The application interface is primarily in Kinyarwanda with English variable
 names to better serve the target audience in Rwanda.
+
+## Testing Credentials
+
+- **Email**: `frerot@moh.gov.rw`
+- **Password**: `frerot`
