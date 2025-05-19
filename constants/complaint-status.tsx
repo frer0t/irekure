@@ -8,7 +8,7 @@ const getComplaintStatus = (
   switch (status) {
     case "submitted":
       return {
-        label: "kiracyategerejwe",
+        label: "Byatanzwe",
         color: "bg-yellow-500",
         icon: <Clock size={size} color="yellow" />,
       };

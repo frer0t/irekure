@@ -10,10 +10,11 @@ import {
   Twitter,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
-
+  const pathname = usePathname();
   const socialLinks = [
     { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
@@ -61,7 +62,9 @@ export const Footer = () => {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0 },
   };
-
+  if (pathname.includes("dashboard")) {
+    return null;
+  }
   return (
     <motion.footer
       className="w-full border-t border-t-foreground/10 py-12 bg-muted/30"

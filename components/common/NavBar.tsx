@@ -2,17 +2,31 @@
 
 import { Button } from "@/components/ui/button";
 import { supabaseClient } from "@/lib/supabase/client";
+import { type User } from "@supabase/supabase-js";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, LogIn, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
 const NavBar = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const {} = supabaseClient.auth.getUser();
+  const [user, setUser] = useState<User | null>();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const {
+        data: { user },
+      } = await supabaseClient.auth.getUser();
+      setUser(user);
+      setLoading(false);
+    };
+
+    checkUser();
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -26,11 +40,13 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when path changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
+  if (pathname === "/dashboard/**") {
+    return null;
+  }
   // Set up navigation items
   const navItems = [
     { href: "/", label: "Ahabanza" },
@@ -38,7 +54,9 @@ const NavBar = () => {
     { href: "/submit", label: "Gutanga Ikibazo" },
     { href: "/about", label: "Abo Turi Bo" },
   ];
-
+  if (pathname.includes("dashboard")) {
+    return null;
+  }
   return (
     <motion.nav
       className={`fixed z-30 flex h-16 w-full justify-center transition-all duration-300 ${
@@ -95,14 +113,16 @@ const NavBar = () => {
 
           <div className="pl-2 ml-2 border-l border-foreground/10">
             <Button size="sm" variant="secondary" className="gap-1.5" asChild>
-              <Link
-                href="/login"
-                className="inline-flex items-center gap-1.5"
-                passHref
-              >
-                <LogIn className="w-4 h-4" />
-                <span>Kwinjira</span>
-              </Link>
+              {!loading && (
+                <Link
+                  href={user ? "/dashboard" : "/login"}
+                  className="inline-flex items-center gap-1.5"
+                  passHref
+                >
+                  <LogIn className="w-4 h-4" />
+                  <span>{user ? "Dashboard" : "Kwinjira"}</span>
+                </Link>
+              )}
             </Button>
           </div>
         </div>
@@ -176,13 +196,13 @@ const NavBar = () => {
                 className="pt-2 mt-2 border-t border-foreground/10"
               >
                 <Link
-                  href="/login"
+                  href={user ? "/dashboard" : "/login"}
                   className="flex items-center justify-between p-3 rounded-lg text-white w-full bg-secondary hover:bg-secondary/80 transition-colors"
                   passHref
                 >
                   <div className="flex items-center gap-2">
                     <LogIn className="w-5 h-5" />
-                    <span>Kwinjira</span>
+                    <span>{user ? "Dashboard" : "Kwinjira"}</span>
                   </div>
                   <ChevronRight className="w-4 h-4" />
                 </Link>

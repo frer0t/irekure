@@ -3,6 +3,12 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 const openPaths = ["/login", "/auth", "/", "/api/", "/track", "/submit"];
+const protectedPaths = [
+  "/dashboard",
+  "/dashboard/**",
+  "/api/dashboard",
+  "/api/dashboard/**",
+];
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
     request,
@@ -43,7 +49,8 @@ export async function updateSession(request: NextRequest) {
 
   if (
     !user &&
-    !openPaths.some((path) => request.nextUrl.pathname.startsWith(path))
+    !openPaths.some((path) => request.nextUrl.pathname.startsWith(path)) &&
+    !protectedPaths.some((path) => request.nextUrl.pathname.startsWith(path))
   ) {
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone();
