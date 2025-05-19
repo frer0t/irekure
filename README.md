@@ -1,106 +1,106 @@
 # irekure
 
-A platform for citizen feedback and government response tracking.
+A platform for citizen feedback and government response tracking in Rwanda.
+
+## About the Project
+
+Irekure is a comprehensive platform designed to bridge communication between
+citizens and government institutions in Rwanda. It allows citizens to submit
+complaints or feedback and track their progress, while providing government
+officials with tools to manage, respond to, and resolve these issues
+efficiently.
+
+The interface is primarily in Kinyarwanda to serve the local population.
+
+## Key Features
+
+- **Public-facing Portal**
+  - Submit complaints/feedback with file attachments
+  - Track complaint status using unique ticket IDs
+  - View government responses to complaints
+  - Responsive design for mobile and desktop access
+- **Admin Dashboard**
+  - Overview of submitted complaints with statistics
+  - Visualization of data through charts and graphs
+  - Complaint management system
+  - Status updates and response capabilities
+  - User management for government officials
 
 ## Tech Stack
 
-- **Framework**: Next.js 15
-- **Styling**: Tailwind CSS
-- **Database**: Supabase
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS with custom theming
+- **Database**: Supabase PostgreSQL
 - **Authentication**: Supabase Auth
-- **UI Components**: Custom components with Radix UI primitives
+- **Storage**: Supabase Storage for file uploads
+- **UI Components**: Custom components built on Radix UI primitives
+- **Data Visualization**: Recharts for dashboard analytics
+- **Animations**: Framer Motion
+- **Forms**: React Hook Form with Zod validation
+
+## Project Structure
+
+- **/app** - Main application pages using Next.js App Router
+  - **/submit** - Public complaint submission interface
+  - **/track** - Public complaint tracking interface
+  - **/dashboard** - Admin interface for managing complaints
+  - **/api** - API routes for data operations
+- **/components** - Reusable UI components
+  - **/common** - Common components like navbar and footer
+  - **/landing** - Landing page specific components
+  - **/ui** - UI primitives and basic components
+- **/lib** - Utility functions and libraries
+  - **/supabase** - Supabase client configuration
+  - **/axios** - Axios client setup
+  - **/zod** - Form validation schemas
+- **/types** - TypeScript type definitions
+- **/constants** - Application constants
 
 ## Supabase Integration
 
 This project uses Supabase for database, authentication, and storage
 capabilities.
 
+### Database Schema
+
+The application relies on the following main tables:
+
+- **complaints** - Stores user-submitted complaints with metadata
+- **categories** - Categories for classifying complaints
+- **answers** - Government responses to complaints
+- **organizations** - Government institutions managing complaints
+- **profiles** - User profiles with roles
+
 ### Setup
 
 1. Create a Supabase project at [https://supabase.com](https://supabase.com)
 2. Copy your Supabase URL and anon key from the project API settings
-3. Add them to your `.env` file:
+3. Add them to your `.env.local` file:
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+NEXT_PUBLIC_API_URL=your-api-url
 ```
 
-### Authentication
+## Authentication Implementation
 
-The project includes ready-to-use authentication:
+Authentication is handled through Supabase Auth with custom middleware to
+protect routes:
 
-- Server-side auth in `/app/auth-example/page.tsx`
-- Client-side auth in `/app/auth-client-example/page.tsx`
+- Public routes: Home page, submission form, tracking page
+- Protected routes: Dashboard and admin interfaces
+- Authentication flow uses SSR for secure server-side validation
 
-### Database Operations
+## File Upload Implementation
 
-Example of database operations can be found in `/app/db-example/page.tsx`.
+The platform supports file uploads for complaints with the following features:
 
-To create tables in your Supabase database:
-
-1. Go to the SQL Editor in your Supabase dashboard
-2. Create your tables using SQL, for example:
-
-```sql
-CREATE TABLE profiles (
-  id UUID REFERENCES auth.users PRIMARY KEY,
-  full_name TEXT,
-  avatar_url TEXT,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
--- Enable Row Level Security
-ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
-
--- Create a policy that allows authenticated users to read all profiles
-CREATE POLICY "Allow all authenticated users to read profiles" ON profiles
-  FOR SELECT USING (auth.role() = 'authenticated');
-
--- Create a policy that allows users to update their own profiles
-CREATE POLICY "Allow users to update their own profiles" ON profiles
-  FOR UPDATE USING (auth.uid() = id);
-```
-
-### Usage in Components
-
-#### Server Components
-
-```tsx
-import { createServerSupabaseClient } from "@/lib/supabase-server";
-
-export default async function Page() {
-  const supabase = createServerSupabaseClient();
-  const { data } = await supabase.from("your_table").select();
-
-  return <div>{/* Your component using the data */}</div>;
-}
-```
-
-#### Client Components
-
-```tsx
-"use client";
-
-import { useSupabase } from "@/providers/SupabaseProvider";
-import { useEffect, useState } from "react";
-
-export default function ClientComponent() {
-  const { supabase } = useSupabase();
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      const { data } = await supabase.from("your_table").select();
-      setData(data);
-    }
-
-    fetchData();
-  }, [supabase]);
-
-  return <div>{/* Your component using the data */}</div>;
-}
-```
+- Multiple file upload support
+- File type validation (images, PDFs, DOCs)
+- Size limit of 10MB per file
+- Files stored in Supabase Storage
 
 ## Development
 
@@ -108,11 +108,17 @@ export default function ClientComponent() {
 # Install dependencies
 pnpm install
 
-# Start development server
+# Start development server with Turbopack
 pnpm dev
+
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
 ```
 
-## Deployment
+## Localization
 
-The application is ready to deploy on Vercel or any platform supporting Next.js
-applications.
+The application interface is primarily in Kinyarwanda with English variable
+names to better serve the target audience in Rwanda.
