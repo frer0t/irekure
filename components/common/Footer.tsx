@@ -231,7 +231,8 @@ export const Footer = () => {
           <p className="text-sm text-foreground/60">
             Yakozwe na{" "}
             <Link
-              href="https://example.com"
+              href="https://www.frerot.dev"
+              target="_blank"
               className="hover:text-primary transition-colors"
             >
               frérot

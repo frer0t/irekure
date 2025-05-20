@@ -1,8 +1,12 @@
 import { CardContent } from "@/components/ui/card";
-import { TicketResponse } from "@/types/api";
+import { Tables } from "@/types/supabase";
 import { formatDate } from "date-fns";
 import { Building2, CalendarDays, Mail, Phone, User } from "lucide-react";
-const TrackingContent = ({ data }: { data: TicketResponse["data"] }) => {
+const TrackingContent = ({
+  data,
+}: {
+  data: { complaint: Tables<"complaints">; answers?: any[] };
+}) => {
   const complaint = data?.complaint;
 
   return (

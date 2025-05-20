@@ -1,5 +1,5 @@
-import { getApi } from "@/lib/axios/axios";
-import { TicketResponse } from "@/types/api";
+import { createClientServer } from "@/lib/supabase/server";
+import { Tables } from "@/types/supabase";
 import { redirect } from "next/navigation";
 import TrackingContent from "../_components/TrackingContent";
 import TrackingHeader from "../_components/TrackingHeader";
@@ -14,17 +14,47 @@ const ResultsPage = async ({
   if (!ticketId) {
     redirect("/track");
   }
-  const { success, message, data } = await getApi<TicketResponse>(
-    `/track/${encodeURIComponent(ticketId)}`
-  );
-  if (!success) {
-    throw new Error(message || "Hari ikibazo cyavutse. Ongera ugerageze");
+
+  const supabase = await createClientServer();
+
+  const { data: answers } = await supabase
+    .from("answers")
+    .select(
+      "answer,created_at,complaint:complaints(name,title,description,created_at,files,status,phone,email,ticket_id),organization:organizations(name,site)"
+    )
+    .eq("complaint", ticketId);
+
+  let responseData: {
+    complaint: Tables<"complaints">;
+    answers?: any[];
+  };
+
+  if (!answers || answers.length === 0) {
+    // No answers, get just the complaint
+    const { data: complaint, error: complaintError } = await supabase
+      .from("complaints")
+      .select("*,category:categories(name)")
+      .eq("ticket_id", ticketId)
+      .single();
+
+    if (complaintError || !complaint) {
+      throw new Error("Complaint not found");
+    }
+
+    responseData = {
+      complaint: complaint as Tables<"complaints">,
+    };
+  } else {
+    responseData = {
+      complaint: answers[0].complaint as Tables<"complaints">,
+      answers: answers,
+    };
   }
 
   return (
     <>
-      <TrackingHeader data={data} />
-      <TrackingContent data={data} />
+      <TrackingHeader data={responseData} />
+      <TrackingContent data={responseData} />
     </>
   );
 };
